@@ -34,6 +34,11 @@ return array(
     },
 
     'profiler.simple_url' => function($url) {
+        $url = $_SERVER['HTTP_HOST'];
+        error_log("url: ". strpos($url,'xhgui'));
+        if (strpos($url,'xhgui') === 0) {
+            return false;
+        }
         return preg_replace('/\=\d+/', '', $url);
     }
 
